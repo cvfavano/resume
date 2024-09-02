@@ -65,9 +65,7 @@ input, textarea  {
   padding: 5px;
 }
 
-#personal-details {
-  display: none;
-}
+
 
 #personal-details p {
   text-align: center;

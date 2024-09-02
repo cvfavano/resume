@@ -20,7 +20,7 @@ import React, { useId , useState} from "react";
     return (
      
       <div className = "personal-details-form">
-        <hr/>
+       
    
         <h4>Personal Details</h4>
 
@@ -64,9 +64,6 @@ import React, { useId , useState} from "react";
           id = {id + "email"}
           readOnly = {isReadOnly}
         />
-        
-        <button type="button" onClick={submitHandler}> Save </button>
-        <button type="button" onClick={editHandler}> Edit </button>
     </div>
   )}
 

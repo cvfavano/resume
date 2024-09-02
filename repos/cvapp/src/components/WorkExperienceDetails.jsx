@@ -4,15 +4,15 @@ function WorkExperienceDetails(props) {
 
     return(
         <div>
-            <h2 class='header'>Work Experience</h2>
+            <h2 className='header'>Work Experience</h2>
             <h3>{props.details.company}  </h3>
-            <h4 class='title'>{props.details.title}
-                <span>{props.details.startDate} - {props.details.endDate}</span>
-                {console.log(props.details.startDate)}
+            <h4 className='title'>{props.details.title}
+                <span>{props.details.startDate} to {props.details.endDate}</span>
+              
             </h4>
-            <p>{typeof props.details.details}</p>
+            <p>{ props.details.details}</p>
 
-            <button>delete</button>
+            {/* <button>delete</button> */}
         </div>
     )
 }

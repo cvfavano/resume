@@ -4,21 +4,29 @@ import PersonalInfoInput from './components/PersonalInfoInput.jsx'
 import PersonalDetails from './components/PersonalDetails.jsx'
 import WorkExperience from './components/WorkExperience.jsx'
 import WorkExperienceDetails from './components/WorkExperienceDetails.jsx'
-
+import Education from './components/Education.jsx'
+import EducationDetails from './components/EducationDetails.jsx'
 function App() {
   const [personalInfo, setPersonalInfo] = useState({
-    fullName: '',
-    email: '',
-    phone: '',
-    address: ''
+    fullName: 'Maki Bao',
+    email: 'cali@google.com',
+    phone: '(909) 876 - 1232',
+    address: '76 Columbia, Oceanside, CA 92056'
   })
 
   const [experience, setExperience] = useState({
-    company:'',
-    startDate: '',
-    endDate: '',
-    title: '',
-    details: ''
+    company:'AGK Consulting',
+    startDate: '2000-01-22',
+    endDate: '2005-02-15',
+    title: 'Consultant',
+    details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+  })
+
+  const [education, setEducation] = useState({
+    name:'ACS',
+    major: 'BS',
+    location:'Remote',
+    date:'2006-12-12'
   })
   const handlePersonalChange = (event, stateName) => {
     
@@ -52,7 +60,10 @@ function App() {
           props = {experience}
           changeHandler = { () => {handlePersonalChange(event, setExperience)}}
         />
-
+      <Education 
+        props = {education}
+        changeHandler={()=> {handlePersonalChange(event, setEducation)}}
+      />
       </div>
     
       <div id='main'>
@@ -60,10 +71,10 @@ function App() {
     
         <PersonalDetails details = { personalInfo } />
         <WorkExperienceDetails details = {experience} />
-        
+        <EducationDetails details = { education } />
    
         
-      <h3>Education</h3>   
+    
       </div>
 
     </div>

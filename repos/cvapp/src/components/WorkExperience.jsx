@@ -2,81 +2,91 @@ import React from 'react';
 import {useState, useId} from 'react';
 
 function WorkExperience({props, changeHandler}) {
-console.log(changeHandler)
+
+    const [form, setForm] = useState({});
+
     const handleSave = () => {
         console.log('save')
+        createForm()
+        //collapse and clear form 
+        //add new div with editable input
     }
 
     const handleEdit= () => {
         console.log('edit')
     }
-
+    const handleDelete= () => {
+        console.log('delete')
+    }
     const id = useId();
-    const [isReadOnly, setReadOnly] = useState(false);
-    return(
-        <div>
-            {console.log(props)}
-            <h4>Work Experience</h4>
-            
-            <label htmlFor={id + 'company'} >Company</label>
+   
 
-            <input 
-            type="text"
-            name = 'company'
-            value={props.company}
-            onChange={changeHandler}
-            id={id + 'company'}
-            readOnly={isReadOnly}
-            /> 
+    function createForm(){
+        return(
+            <div>
+                 <hr />
+                <h4>Work Experience</h4>
                 
-                <label htmlFor={id + 'title'} >Title</label>
-
-            <input 
-            type="text"
-            name = 'title'
-            value={props.title}
-            onChange={changeHandler}
-            id={id + 'title'}
-            readOnly={isReadOnly}
-            /> 
-                       
-            <label htmlFor={id + 'startDate'} >startDate</label>
-
-            <input 
-            type="date"
-            name = 'startDate'
-            value={props.startDate}
-            onChange={changeHandler}
-            id={id + 'startDate'}
-            readOnly={isReadOnly}
-            /> 
-
-            <label htmlFor={id + 'endDate'} >startDate</label>
-
-            <input 
+                <label htmlFor={id + 'company'} >Company</label>
+    
+                <input 
+                type="text"
+                name = 'company'
+                value={props.company}
+                onChange={changeHandler}
+                id={id + 'company'}
+       
+                /> 
+                    
+                    <label htmlFor={id + 'title'} >Title</label>
+    
+                <input 
+                type="text"
+                name = 'title'
+                value={props.title}
+                onChange={changeHandler}
+                id={id + 'title'}
+                /> 
+                           
+                <label htmlFor={id + 'startDate'} >startDate</label>
+    
+                <input 
                 type="date"
-                name = 'endDate'
-                value={props.endDate}
+                name = 'startDate'
+                value={props.startDate}
                 onChange={changeHandler}
-                id={id + 'endDate'}
-                readOnly={isReadOnly}
-            /> 
-
-            <label htmlFor = {id + 'details'}>Details</label>
-            <textarea 
-               // type="textarea"
-                name = 'details'
-                value={props.details}
-                onChange={changeHandler}
-                id={id + 'details'}
-                readOnly={isReadOnly}
-            />                  
-
-
-            <button onClick={handleSave}>Save</button>
-
-            <button onClick={handleEdit}>Edit</button>
-         </div>
+                id={id + 'startDate'}
+                /> 
+    
+                <label htmlFor={id + 'endDate'} >End Date</label>
+    
+                <input 
+                    type="date"
+                    name = 'endDate'
+                    value={props.endDate}
+                    onChange={changeHandler}
+                    id={id + 'endDate'}
+                /> 
+    
+                <label htmlFor = {id + 'details'}>Details</label>
+                <textarea 
+                     name = 'details'
+                    value={props.details}
+                    onChange={changeHandler}
+                    id={id + 'details'} 
+                />                  
+    
+    
+                {/* <button onClick={handleSave}>Save</button>
+    
+                <button onClick={handleEdit}>Edit</button> */}
+                {/* <button onClick={handleDelete}>Delete</button> */}
+             </div>
+        )
+    }
+    
+    return(
+        createForm()
     )
 }
 
