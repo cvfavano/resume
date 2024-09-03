@@ -27,7 +27,7 @@ function WorkExperience({props, changeHandler}) {
                  <hr />
                 <h4>Work Experience</h4>
                 
-                <label htmlFor={id + 'company'} >Company</label>
+                <label htmlFor= { id + 'company' } >Company</label>
     
                 <input 
                 type="text"
@@ -38,7 +38,7 @@ function WorkExperience({props, changeHandler}) {
        
                 /> 
                     
-                    <label htmlFor={id + 'title'} >Title</label>
+                <label htmlFor={id + 'title'} >Title</label>
     
                 <input 
                 type="text"

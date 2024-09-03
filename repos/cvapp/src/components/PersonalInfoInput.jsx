@@ -1,22 +1,11 @@
-import React, { useId , useState} from "react";
+import React, { useId } from "react";
 
- function PersonalInfoInput({props, changeHandler }) {
+ function PersonalInfoInput({ props, changeHandler }) {
 
   
   const id = useId();
-  console.log(props)
+ 
 
-  const editHandler = () => {
-    console.log('edit')
-    setIsReadOnly(false);
-  }
-
-  const [isReadOnly, setIsReadOnly] = useState(false);
-//find a better way to do this
-  const submitHandler = () => {
-    document.getElementById('personal-details').style.display = 'block';
-    setIsReadOnly(true);
-  }
     return (
      
       <div className = "personal-details-form">
@@ -31,7 +20,7 @@ import React, { useId , useState} from "react";
           name = "fullName"
           value = { props.fullName }
           id = {id + "name"}
-          readOnly = {isReadOnly}
+         
         />
         
         <label htmlFor = {id + "-address"}>Address: </label><br/>
@@ -41,7 +30,6 @@ import React, { useId , useState} from "react";
           name = "address"
           value = {props.address}
           id = {id + "-address"}
-          readOnly = {isReadOnly}
         />
        
         <label htmlFor = {id + "-phone"}>Phone: </label><br/>
@@ -51,7 +39,6 @@ import React, { useId , useState} from "react";
           name = "phone"
           value = {props.phone}
           id = {id + "phone"}
-          readOnly = {isReadOnly}
         />
         <br/>
 
@@ -62,7 +49,6 @@ import React, { useId , useState} from "react";
           name = "email"
           value = {props.email}
           id = {id + "email"}
-          readOnly = {isReadOnly}
         />
     </div>
   )}

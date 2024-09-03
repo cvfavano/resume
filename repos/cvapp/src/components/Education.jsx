@@ -1,48 +1,52 @@
 import React from 'react'
 import uuid from 'react-uuid'
 
-function Education({props, clickHandler}) {
-
+function Education({props, changeHandler}) {
+    console.log(props)
+    console.log(props.name)
+    const id = uuid();
+    const { name, date, major, location } = props;
     return(
         <div>
             <hr />
-             <h4>Education</h4>
-            <label htmlFor ='name'>Name</label>
+            <h4>Education</h4>
+
+            <label htmlFor ={id +'name'}>Name</label>
+            
             <input 
-            value = {props.name}
-            name= 'name'
-            type="text"
-            id={uuid()}
-            onChange = {clickHandler}
+                value = {name}
+                name= 'name'
+                type='text'
+                id={id + 'name'}
+                onChange = { changeHandler }
             />
 
-            <label htmlFor ='date'>Graduation Date</label>
+            <label htmlFor ={id +'date'}>Graduation Date</label>
             <input 
-            value = {props.date}
-            name= 'date'
-            type="date"
-            id={uuid()}
-            onChange = {clickHandler}
+                value = {date}
+                name = 'date'
+                type = 'date'
+                id= { id + 'date' }
+                onChange = { changeHandler }
             />
 
-            <label htmlFor ='major'>Major</label>
+            <label htmlFor ={ id +'major' }>Major</label>
             <input 
-            value = {props.major}
-            name= 'major'
-            type="text"
-            id={uuid()}
-            onChange = {clickHandler}
+                value = { major }
+                name = 'major'
+                type = 'text'
+                id = { id + 'major'}
+                onChange = { changeHandler }
             />
             
-            <label htmlFor ='location'>Location</label>
+            <label htmlFor = { id + 'location' }>Location</label>
             <input 
-            value = {props.location}
-            name='location'
-            type="text"
-            id={uuid()}
-            onChange = {clickHandler}
+                value = { location }
+                name = 'location'
+                type = 'text'
+                id = {id + 'location' }
+                onChange = { changeHandler }
             />
-
         </div>
     )
 

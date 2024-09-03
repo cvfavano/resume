@@ -6,12 +6,13 @@ import WorkExperience from './components/WorkExperience.jsx'
 import WorkExperienceDetails from './components/WorkExperienceDetails.jsx'
 import Education from './components/Education.jsx'
 import EducationDetails from './components/EducationDetails.jsx'
+
 function App() {
   const [personalInfo, setPersonalInfo] = useState({
     fullName: 'Maki Bao',
     email: 'cali@google.com',
     phone: '(909) 876 - 1232',
-    address: '76 Columbia, Oceanside, CA 92056'
+    address: 'Carlsbad, CA'
   })
 
   const [experience, setExperience] = useState({
@@ -23,11 +24,13 @@ function App() {
   })
 
   const [education, setEducation] = useState({
-    name:'ACS',
-    major: 'BS',
-    location:'Remote',
-    date:'2006-12-12'
+    name:'ACS University',
+    major: 'BSc Chemical Engineering',
+    location:'London, UK',
+    date: '2006-12-12'
   })
+
+  {console.log(education)}
   const handlePersonalChange = (event, stateName) => {
     
     const {name, value} = event.target;
@@ -44,35 +47,32 @@ function App() {
     console.log(personalInfo)
   }
 
-  // const handleClickPersonal = () => {
-  //   console.log('here');
-  // }
-
   return (
     <div className='container'>
       <div id='sidebar'>
         <PersonalInfoInput 
           props =  { personalInfo }
           changeHandler = { () => {handlePersonalChange(event, setPersonalInfo)} }
-          
         />
+
         <WorkExperience 
           props = {experience}
           changeHandler = { () => {handlePersonalChange(event, setExperience)}}
         />
+
       <Education 
         props = {education}
-        changeHandler={()=> {handlePersonalChange(event, setEducation)}}
+        changeHandler={ () => {handlePersonalChange(event, setEducation)} }
       />
+
       </div>
     
       <div id='main'>
-   
     
         <PersonalDetails details = { personalInfo } />
-        <WorkExperienceDetails details = {experience} />
+        <WorkExperienceDetails details = { experience } />
         <EducationDetails details = { education } />
-   
+       
         
     
       </div>
