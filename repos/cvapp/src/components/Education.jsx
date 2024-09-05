@@ -2,8 +2,8 @@ import React from 'react'
 import uuid from 'react-uuid'
 
 function Education({props, changeHandler}) {
-    console.log(props)
-    console.log(props.name)
+    // console.log(props)
+    // console.log(props.name)
     const id = uuid();
     const { name, date, major, location } = props;
     return(

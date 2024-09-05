@@ -1,10 +1,7 @@
 import React from "react";
 
 function PersonalDetails(props) {
-//why is this nested
-//is this prop drilling
-        console.log(props.details)
-   // console.log(props.props.fullName)
+
 
 
     return (

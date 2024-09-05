@@ -19,7 +19,7 @@ import React, { useId } from "react";
           onChange = {changeHandler} 
           name = "fullName"
           value = { props.fullName }
-          id = {id + "name"}
+          id = {id + "-name"}
          
         />
         
@@ -38,7 +38,7 @@ import React, { useId } from "react";
           onChange = {changeHandler}
           name = "phone"
           value = {props.phone}
-          id = {id + "phone"}
+          id = {id + "-phone"}
         />
         <br/>
 
@@ -48,7 +48,7 @@ import React, { useId } from "react";
           onChange = {changeHandler}
           name = "email"
           value = {props.email}
-          id = {id + "email"}
+          id = {id + "-email"}
         />
     </div>
   )}

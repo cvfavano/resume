@@ -2,7 +2,7 @@ import React from 'react';
 
 
 export default function EducationDetails(props) {
- console.log(props)
+
     return(
         <div id="education-details">
             <h2 className="header">Education</h2>  
