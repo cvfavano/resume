@@ -1,8 +1,7 @@
 import React from 'react';
 
 function WorkExperienceDetails(props) {
-console.log('her')
-console.log(props)
+
     return(
         <div>    
             {
