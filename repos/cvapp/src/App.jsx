@@ -9,6 +9,10 @@ import Education from './components/Education.jsx'
 import EducationDetails from './components/EducationDetails.jsx' 
 
 function App() {
+
+//how will this work, toggle edit mode
+const [showButtons, setButtons] = useState(true);
+
   const [personalInfo, setPersonalInfo] = useState({
     fullName: 'Maki Bao',
     email: 'cali@google.com',
@@ -45,26 +49,12 @@ function App() {
     }))
   }
 const handleDelete = (id) => {
-  console.log(id)
-  console.log('delete')
-  console.log('length'+ experience.length)
-  console.log('experience' +experience)
-
-
-
-
-
   setExperience((prevExperience)=> { 
-
-   
      return prevExperience
     .filter((experience => experience.id !== id ))
-    })
-  
-   
-   
-  
+    })  
 }
+// CHECK: IS THIS THE CORRECT WAY TO HANDLE UNDEFINED STATE
 if(experience.length === 0) { 
   setExperience([{ 
     id: uuid(),
@@ -75,18 +65,22 @@ if(experience.length === 0) {
     details: 'Add Description'
   }])
 } 
-  const handleExperienceChange = (event, id) => {
+  const handleWorkHistoryForm = (event, id) => {
     console.log(id)
 
-    const {name, value} = event.target;
-console.log(event.target);
-    // setExperience(previousExperience => (
-    //   previousExperience.map(experience =>
-    //       experience.id ===
 
-    //   )
-    //   [name]: value
-    // }
+    const {name, value} = event.target;
+    console.log(event.target);
+
+    setExperience(previousExperience =>{
+      console.log('here')
+    console.log(previousExperience)
+  
+    // const editedExperience =   previousExperience.filter(experience => experience.id == id)
+    // editedExperience[name] : value
+        
+  }
+    )
     
     // setItems(prevItems => prevItems.map(item =>
     //   item.id === id ? { ...item, value: newValue } : item
@@ -95,10 +89,9 @@ console.log(event.target);
 
 
 
-  const handleAddExperience = (event) => {
-  
+  const handleCreateWorkHistory = (event) => {
    
-    const newExperience=  {
+    const newWorkHistory=  {
       id: uuid(),
       company:'New Company',
       startDate: '1122-11-12',
@@ -107,15 +100,17 @@ console.log(event.target);
       details:'Add Details'
     }
     
-      setExperience(previousState => ([
+    setExperience(previousState => ([
       ...previousState,
-      newExperience
+      handleCreateWorkHistory
     ]))
 
     
   
   }
-    
+  const handleUpdate = (id) => {
+
+  }
    
 
  
@@ -130,13 +125,12 @@ console.log(event.target);
           changeHandler = { () => {handlePersonalChange(event, setPersonalInfo)} }
         /> */}
   
-  {experience.length != 0 && (
+
         <WorkExperienceForm
-          props = {experience}
-          onChangeHandler = { handleExperienceChange}
-          addHandler = {handleAddExperience}
+          details = {experience}
+          onChangeHandler = { handleWorkHistoryForm}
+          addHandler = {handleCreateWorkHistory}
         />
-  )}
 
       {/* <Education 
         props = {education}
@@ -151,8 +145,12 @@ console.log(event.target);
 
         {experience.length != 0 && (
         <div>
-        <h2 className='header'>Work Experience</h2>
-        <WorkExperienceDetails props = { experience } deleteHandler = {handleDelete} />
+          <h2 className='header'>Work Experience</h2>
+          <WorkExperienceDetails 
+            props = { experience } 
+            deleteHandler = { handleDelete } 
+            editHandler = { handleUpdate }  
+          />
         </div>)
         }
         <EducationDetails details = { education } />

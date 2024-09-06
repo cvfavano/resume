@@ -6,12 +6,19 @@ function WorkExperienceForm(props) {
 
     const [showForm, setShowForm] = useState(true);
   
-    console.log(props.props.length)
-    let currentProp = props.props.length -1; //is a num, last prop
+    console.log(props.details.length)
+    let currentProp = props.details.length -1; //is a num, last prop //is this right?
     let currentID = currentProp.id
-    console.log(currentID)
-    console.log(props.props)
-    console.log(props.props[currentProp].id) 
+  //  console.log(currentID)
+    console.log(props.details)
+    console.log(props.details[currentProp].id) 
+
+   const filteredList= props.details.filter(current =>
+     current.id == props.details[currentProp].id)
+   
+     console.log('here' )
+     console.log( filteredList)
+    
 
     const AddNewExperience = function (){ 
         props.addHandler() ;
@@ -38,7 +45,7 @@ function WorkExperienceForm(props) {
             <input 
             type="text"
             name = 'company'
-            value={props.props[currentProp].company}
+            value={props.details[currentProp].company}
             onChange={()=>props.onChangeHandler(event, currentID)}
             id={id + 'company'}
 
@@ -49,7 +56,7 @@ function WorkExperienceForm(props) {
             <input 
             type="text"
             name = 'title'
-            value={props.props[currentProp].title}
+            value={props.details[currentProp].title}
             onChange={()=>props.onChangeHandler(event)}
             id={id + 'title'}
             /> 
@@ -59,7 +66,7 @@ function WorkExperienceForm(props) {
             <input 
             type="date"
             name = 'startDate'
-            value={props.props[currentProp].startDate}
+            value={props.details[currentProp].startDate}
             onChange={()=>props.onChangeHandler(event)}
             id={id + 'startDate'}
             /> 
@@ -69,7 +76,7 @@ function WorkExperienceForm(props) {
             <input 
                 type="date"
                 name = 'endDate'
-                value={props.props[currentProp].endDate}
+                value={props.details[currentProp].endDate}
                 onChange={()=>props.onChangeHandler(event)}
                 id={id + 'endDate'}
             /> 
@@ -77,7 +84,7 @@ function WorkExperienceForm(props) {
             <label htmlFor = {id + 'details'}>Details</label>
             <textarea 
                 name = 'details'
-                value={props.props[currentProp].details}
+                value={props.details[currentProp].details}
                 onChange={()=>props.onChangeHandler(event)}
                 id={id + 'details'} 
                 ></textarea>
