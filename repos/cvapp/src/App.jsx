@@ -77,7 +77,7 @@ const handleDelete = (id) => {
   
     experience.map(job => {      
       if(job.id === id) 
-        ( setExperience([...items, {...job, [name]:value}]))
+        ( setExperience([...items, {...job, [name]:value}]) )
     })
   }
 
@@ -103,19 +103,18 @@ const handleDelete = (id) => {
   const handleUpdate = (id) => {
     //grab item, put in form, handle onchange event, 
     //
-
-    const filteredWorkHistoryByID = experience.filter(job => job.id === id);
-
-    setExperience( prevExperience => ({
-
+    const jobs = experience.filter(job => job.id != id)
+    console.log(jobs)
+    
+    experience.filter(job => {
+      if (job.id === id) {
+        (setExperience([...jobs, job]))
+      }
     })
-
-
-    )
   }
    
 
- //is this the proper way to handle the form prop?
+ //is this the proper way to handle the form prop? instead of sending all of [{experience}]
 const filteredWorkHistoryByID = (id) => {
   if(experience.length > 1) {
     return ([experience[experience.length-1]])
