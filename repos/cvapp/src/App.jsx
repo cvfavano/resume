@@ -109,7 +109,8 @@ if(experience.length === 0) {
   
   }
   const handleUpdate = (id) => {
-
+    //grab item, put in form, handle onchange event, 
+    //
   }
    
 

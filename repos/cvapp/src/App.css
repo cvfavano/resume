@@ -98,8 +98,26 @@ label {
   margin-left: auto;
 }
 
-.work-experience  button {
+.work-experience button {
   margin-left: 0.2em;
   padding: 0.4em;
   font-size: 0.75em;
+}
+
+
+.work-experience h3{
+  display: flex;
+}
+.work-experience h3 span{
+  
+  margin-left: auto;
+}
+
+.work-experience h3 {
+  margin-bottom: 0;
+}
+
+.work-experience .title {
+  margin-top: 0;
+  font-style: italic;
 }
