@@ -73,13 +73,13 @@ const handleDelete = (id) => {
   const handleUpdateWorkHistoryForm = (event, id) => {
 
     const {name, value} = event.target;
-      const items = experience.filter(job => job.id != id);
+    const items = experience.filter(job => job.id != id);
   
-      experience.map(experience => {      
-        if(experience.id === id) 
-           ( setExperience([...items, {...experience, [name]:value}]))
-      })
-    }
+    experience.map(job => {      
+      if(job.id === id) 
+        ( setExperience([...items, {...job, [name]:value}]))
+    })
+  }
 
   const handleCreateWorkHistory = () => {
    
