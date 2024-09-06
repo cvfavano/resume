@@ -94,15 +94,15 @@ if(experience.length === 0) {
     const newWorkHistory=  {
       id: uuid(),
       company:'New Company',
-      startDate: '1122-11-12',
-      endDate: '1122-12-12',
+      startDate: '',
+      endDate: '',
       title: 'Add Title',
       details:'Add Details'
     }
     
     setExperience(previousState => ([
       ...previousState,
-      handleCreateWorkHistory
+      newWorkHistory
     ]))
 
     
