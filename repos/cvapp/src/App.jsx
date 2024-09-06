@@ -53,43 +53,35 @@ const handleDelete = (id) => {
      return prevExperience
     .filter((experience => experience.id !== id ))
     })  
-}
-// CHECK: IS THIS THE CORRECT WAY TO HANDLE UNDEFINED STATE
-if(experience.length === 0) { 
-  setExperience([{ 
-    id: uuid(),
-    company:'Add Company',
-    startDate: '2000-01-22',
-    endDate: '2005-02-15',
-    title: 'Add Title',
-    details: 'Add Description'
-  }])
-} 
-  const handleWorkHistoryForm = (event, id) => {
-    console.log(id)
 
+
+}
+
+    // CHECK: IS THIS THE CORRECT WAY TO HANDLE UNDEFINED STATE
+    if(experience.length === 0) { 
+      setExperience([{ 
+        id: uuid(),
+        company:'Add Company',
+        startDate: '2000-01-22',
+        endDate: '2005-02-15',
+        title: 'Add Title',
+        details: 'Add Description'
+      }])
+    } 
+
+
+  const handleUpdateWorkHistoryForm = (event, id) => {
 
     const {name, value} = event.target;
-    console.log(event.target);
-
-    setExperience(previousExperience =>{
-      console.log('here')
-    console.log(previousExperience)
+      const items = experience.filter(job => job.id != id);
   
-    // const editedExperience =   previousExperience.filter(experience => experience.id == id)
-    // editedExperience[name] : value
-        
-  }
-    )
-    
-    // setItems(prevItems => prevItems.map(item =>
-    //   item.id === id ? { ...item, value: newValue } : item
-  // ))
-  }
+      experience.map(experience => {      
+        if(experience.id === id) 
+           ( setExperience([...items, {...experience, [name]:value}]))
+      })
+    }
 
-
-
-  const handleCreateWorkHistory = (event) => {
+  const handleCreateWorkHistory = () => {
    
     const newWorkHistory=  {
       id: uuid(),
@@ -111,12 +103,28 @@ if(experience.length === 0) {
   const handleUpdate = (id) => {
     //grab item, put in form, handle onchange event, 
     //
+
+    const filteredWorkHistoryByID = experience.filter(job => job.id === id);
+
+    setExperience( prevExperience => ({
+
+    })
+
+
+    )
   }
    
 
- 
-
+ //is this the proper way to handle the form prop?
+const filteredWorkHistoryByID = (id) => {
+  if(experience.length > 1) {
+    return ([experience[experience.length-1]])
+  }
   
+  return experience
+
+}
+   
 
   return (
     <div className='container'>
@@ -128,8 +136,8 @@ if(experience.length === 0) {
   
 
         <WorkExperienceForm
-          details = {experience}
-          onChangeHandler = { handleWorkHistoryForm}
+          details = {filteredWorkHistoryByID()}
+          onChangeHandler = { handleUpdateWorkHistoryForm}
           addHandler = {handleCreateWorkHistory}
         />
 

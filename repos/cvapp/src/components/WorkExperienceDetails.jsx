@@ -16,7 +16,10 @@ function WorkExperienceDetails(props) {
                         </h3>
                         
                         <h4 className='title'>{work.title}
-                            <span>{work.startDate} to {work.endDate}</span>
+                        <span>
+                            {work.startDate != '' ? work.startDate : 'start date'}
+                            &nbsp; to &nbsp;   
+                            {work.endDate != '' ? work.endDate : 'end date'}</span>
                         </h4>
                         
                         <p>{work.details}</p>
