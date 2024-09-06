@@ -47,14 +47,34 @@ function App() {
 const handleDelete = (id) => {
   console.log(id)
   console.log('delete')
+  console.log('length'+ experience.length)
+  console.log('experience' +experience)
+
+
+
+
 
   setExperience((prevExperience)=> { 
-    const experiences =  prevExperience
-    .filter((experience => experience.id !== id ))
-    return experiences
-  })
-}
 
+   
+     return prevExperience
+    .filter((experience => experience.id !== id ))
+    })
+  
+   
+   
+  
+}
+if(experience.length === 0) { 
+  setExperience([{ 
+    id: uuid(),
+    company:'Add Company',
+    startDate: '2000-01-22',
+    endDate: '2005-02-15',
+    title: 'Add Title',
+    details: 'Add Description'
+  }])
+} 
   const handleExperienceChange = (event, id) => {
     console.log(id)
 
@@ -110,11 +130,13 @@ console.log(event.target);
           changeHandler = { () => {handlePersonalChange(event, setPersonalInfo)} }
         /> */}
   
+  {experience.length != 0 && (
         <WorkExperienceForm
           props = {experience}
           onChangeHandler = { handleExperienceChange}
           addHandler = {handleAddExperience}
         />
+  )}
 
       {/* <Education 
         props = {education}
@@ -126,8 +148,13 @@ console.log(event.target);
       <div id='main'>
 {/*     
         <PersonalDetails details = { personalInfo } /> */}
+
+        {experience.length != 0 && (
+        <div>
         <h2 className='header'>Work Experience</h2>
         <WorkExperienceDetails props = { experience } deleteHandler = {handleDelete} />
+        </div>)
+        }
         <EducationDetails details = { education } />
        
         
