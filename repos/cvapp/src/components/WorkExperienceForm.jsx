@@ -6,6 +6,7 @@ function WorkExperienceForm(props) {
     console.log(props)
    
     const workExperience = props.details.at(-1);
+    console.log('from form')
     console.log(workExperience)
    
     const AddNewExperience = function (){ 

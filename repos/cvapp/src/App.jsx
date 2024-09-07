@@ -12,7 +12,16 @@ function App() {
 
 //todo, toggle edit mode
 const [showButtons, setButtons] = useState(true);
+const [isEdit, setisEdit] = useState(false);
 
+const [workForm, setWorkForm] = useState({
+  id: uuid(),
+  company:'',
+  startDate: '',
+  endDate: '',
+  title: '',
+  details: ''
+})
   const [personalInfo, setPersonalInfo] = useState({
     fullName: 'Maki Bao',
     email: 'cali@google.com',
@@ -50,6 +59,7 @@ const [showButtons, setButtons] = useState(true);
     }))
   }
 const handleDelete = (id) => {
+  setisEdit(false)
   setExperience((prevExperience)=> { 
      return prevExperience
       .filter((experience => experience.id !== id ))
@@ -72,35 +82,41 @@ const handleDelete = (id) => {
 
 //form updates only
   const handleUpdateWorkHistoryForm = (event, id) => {
+//if isEdit
 
-    // let currentJobs = experience;
-    //  let filteredJob = experience.filter(job => { (job.id === id)}) 
-    //  console.log*()
-    // const filteredJobId = id;
+//else is edit is off
     const {name, value} = event.target;
-    // const items = experience.filter(job => job.id != id);
-  
-    // experience.map(job => {      
-    //   if(job.id === id) 
-    //     ( setExperience([...items, {...job, [name]:value}]) )
-    // })
+    
       const updateExperience = experience.map((job) => {
-        console.log(job)
-        console.log(id)
+       
         if (job.id  === id) {
-          console.log(job)
-        console.log([name], value);
+         
          return( {...job, [name]: value});
         }
         else 
          return job;
         })
-      console.log(updateExperience)
+
       setExperience(updateExperience);
     }
 
+    //edit button trigger //update state of experience and workForm
+    const handleUpdateWorkHistoryFormfromEdit = (event, id) => {
+    
+      handleUpdateWorkHistoryForm(event, id);
+          const {name, value} = event.target;
+            const updateEditedExperience = workForm.map((job) => {
+              if (job.id  === id) {
+               return( {...job, [name]: value});
+              }
+              else 
+               return job;
+              })
+            setWorkForm(updateEditedExperience);
+          }
   
   const handleCreateWorkHistory = () => {
+    setisEdit(false);
     const newId = uuid()
     const newWorkHistory=  {
       id: newId,
@@ -118,12 +134,14 @@ const handleDelete = (id) => {
   }
  
   const loadUpdateToForm = (id) => {
+    setisEdit(true)
     let jobToUpdate = experience.filter(job => {
       if (job.id === id) 
-        (job)
+        return job
       
     })
-    return jobToUpdate
+    setWorkForm(jobToUpdate)
+    
   }
    
   return (
@@ -135,13 +153,23 @@ const handleDelete = (id) => {
         /> */}
   
           {/* 2 functions updating this (add and edit) how to go about this properly*/}
-        <WorkExperienceForm
-          details = {experience}
         
-          onChangeHandler = { handleUpdateWorkHistoryForm}
+        { !isEdit && <div>
+          <WorkExperienceForm
+            details = {experience}
+            onChangeHandler = { handleUpdateWorkHistoryForm}
+            addHandler = {handleCreateWorkHistory} />
+         </div>
+        }
+        { isEdit && <div>
+        <WorkExperienceForm
+          details = {workForm}
+          onChangeHandler = { handleUpdateWorkHistoryFormfromEdit}
           addHandler = {handleCreateWorkHistory}
         />
-
+       
+        </div>
+        } 
       {/* <Education 
         props = {education}
         changeHandler={ () => {handlePersonalChange(event, setEducation)} }
