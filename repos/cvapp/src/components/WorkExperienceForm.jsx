@@ -3,7 +3,11 @@ import { useId} from 'react';
 
 //this only needs one work history from [{experience}]
 function WorkExperienceForm(props) {
-
+    console.log(props)
+    const currentId = props.id;
+    const workExperience = props.details.filter(job => job.id === props.id);
+    console.log(workExperience)
+    console.log(currentId)
   
     const AddNewExperience = function (){ 
         props.addHandler() ;
@@ -22,8 +26,8 @@ function WorkExperienceForm(props) {
                 <input 
                     type="text"
                     name = 'company'
-                    value={props.details[0].company}
-                    onChange={()=>props.onChangeHandler(event, props.details[0].id)}
+                    value={workExperience[0].company}
+                    onChange={()=>props.onChangeHandler(event, workExperience[0].id)}
                     id={id + 'company'} 
                 />
             </div>
@@ -34,8 +38,8 @@ function WorkExperienceForm(props) {
             <input 
             type="text"
             name = 'title'
-            value={props.details[0].title}
-            onChange={()=>props.onChangeHandler(event, props.details[0].id)}
+            value={workExperience[0].title}
+            onChange={()=>props.onChangeHandler(event, workExperience[0].id)}
             id={id + 'title'}
             /> 
                     
@@ -44,8 +48,8 @@ function WorkExperienceForm(props) {
             <input 
             type="date"
             name = 'startDate'
-            value={props.details[0].startDate}
-            onChange={()=>props.onChangeHandler(event, props.details[0].id)}
+            value={workExperience[0].startDate}
+            onChange={()=>props.onChangeHandler(event, workExperience[0].id)}
             id={id + 'startDate'}
             /> 
 
@@ -54,16 +58,16 @@ function WorkExperienceForm(props) {
             <input 
                 type="date"
                 name = 'endDate'
-                value={props.details[0].endDate}
-                onChange={()=>props.onChangeHandler(event, props.details[0].id)}
+                value={workExperience[0].endDate}
+                onChange={()=>props.onChangeHandler(event, workExperience[0].id)}
                 id={id + 'endDate'}
             /> 
 
             <label htmlFor = {id + 'details'}>Details</label>
             <textarea 
                 name = 'details'
-                value={props.details[0].details}
-                onChange={()=>props.onChangeHandler(event, props.details[0].id)}
+                value={workExperience[0].details}
+                onChange={()=>props.onChangeHandler(event, workExperience[0].id)}
                 id={id + 'details'} 
                 ></textarea>
         </div>

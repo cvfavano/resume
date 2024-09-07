@@ -10,7 +10,7 @@ import EducationDetails from './components/EducationDetails.jsx'
 
 function App() {
 
-//how will this work, toggle edit mode
+//todo, toggle edit mode
 const [showButtons, setButtons] = useState(true);
 
   const [personalInfo, setPersonalInfo] = useState({
@@ -30,6 +30,7 @@ const [showButtons, setButtons] = useState(true);
     details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
   },
 ])
+const [workID, setWorkID] = useState(experience[0].id);
 
   const [education, setEducation] = useState({
     name:'ACS University',
@@ -51,26 +52,31 @@ const [showButtons, setButtons] = useState(true);
 const handleDelete = (id) => {
   setExperience((prevExperience)=> { 
      return prevExperience
-    .filter((experience => experience.id !== id ))
-    })  
+      .filter((experience => experience.id !== id ))
+  })  
 
-
+  // CHECK: IS THIS THE CORRECT WAY TO HANDLE UNDEFINED STATE
+  if(experience.length === 0) { 
+    const newId =uuid()
+    setExperience([{ 
+      id: newId,
+      company:'Add Company',
+      startDate: '2000-01-22',
+      endDate: '2005-02-15',
+      title: 'Add Title',
+      details: 'Add Description'
+    }])
+    setWorkID(newId)
+  } 
 }
 
-    // CHECK: IS THIS THE CORRECT WAY TO HANDLE UNDEFINED STATE
-    if(experience.length === 0) { 
-      setExperience([{ 
-        id: uuid(),
-        company:'Add Company',
-        startDate: '2000-01-22',
-        endDate: '2005-02-15',
-        title: 'Add Title',
-        details: 'Add Description'
-      }])
-    } 
+    
 
-
+//form updates only
   const handleUpdateWorkHistoryForm = (event, id) => {
+
+    // let currentJobs = experience;
+    // let filteredJob = currentJobs.filter(job => { (job.id === id)}) 
 
     const {name, value} = event.target;
     const items = experience.filter(job => job.id != id);
@@ -82,9 +88,9 @@ const handleDelete = (id) => {
   }
 
   const handleCreateWorkHistory = () => {
-   
+    const newId = uuid()
     const newWorkHistory=  {
-      id: uuid(),
+      id: newId,
       company:'New Company',
       startDate: '',
       endDate: '',
@@ -97,32 +103,24 @@ const handleDelete = (id) => {
       newWorkHistory
     ]))
 
+    setWorkID(newWorkHistory.id)
+
     
   
   }
-  const handleUpdate = (id) => {
-    //grab item, put in form, handle onchange event, 
-    //
-    const jobs = experience.filter(job => job.id != id)
-    console.log(jobs)
+ 
+  const loadUpdateToForm = (id) => {
+ 
     
     experience.filter(job => {
       if (job.id === id) {
-        (setExperience([...jobs, job]))
+        (setWorkID(id))
       }
     })
   }
    
 
- //is this the proper way to handle the form prop? instead of sending all of [{experience}]
-const filteredWorkHistoryByID = (id) => {
-  if(experience.length > 1) {
-    return ([experience[experience.length-1]])
-  }
-  
-  return experience
 
-}
    
 
   return (
@@ -133,9 +131,10 @@ const filteredWorkHistoryByID = (id) => {
           changeHandler = { () => {handlePersonalChange(event, setPersonalInfo)} }
         /> */}
   
-
+          {/* 2 functions updating this (add and edit) how to go about this properly*/}
         <WorkExperienceForm
-          details = {filteredWorkHistoryByID()}
+          details = {experience}
+          id = {workID}
           onChangeHandler = { handleUpdateWorkHistoryForm}
           addHandler = {handleCreateWorkHistory}
         />
@@ -151,16 +150,16 @@ const filteredWorkHistoryByID = (id) => {
 {/*     
         <PersonalDetails details = { personalInfo } /> */}
 
-        {experience.length != 0 && (
+      
         <div>
           <h2 className='header'>Work Experience</h2>
           <WorkExperienceDetails 
             props = { experience } 
             deleteHandler = { handleDelete } 
-            editHandler = { handleUpdate }  
+            editHandler = { loadUpdateToForm }  
           />
-        </div>)
-        }
+        </div>
+        
         <EducationDetails details = { education } />
        
         
