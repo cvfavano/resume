@@ -49,15 +49,16 @@ const [workForm, setWorkForm] = useState({
   })
 
 
-  const handlePersonalChange = (event, stateName) => {
+const handlePersonalChange = (event) => {
     
     const {name, value} = event.target;
 
-    stateName(previousState => ({
+    setPersonalInfo(previousState => ({
       ...previousState,
       [name]: value
     }))
-  }
+}
+
 const handleDelete = (id) => {
   setisEdit(false)
   setExperience((prevExperience)=> { 
@@ -68,7 +69,6 @@ const handleDelete = (id) => {
 }
   // CHECK: IS THIS THE CORRECT WAY TO HANDLE UNDEFINED STATE
   if(experience.length === 0) { 
- 
     setExperience([{ 
       id: uuid(),
       company:'Add Company',
@@ -82,9 +82,7 @@ const handleDelete = (id) => {
 
 //form updates only
   const handleUpdateWorkHistoryForm = (event, id) => {
-//if isEdit
 
-//else is edit is off
     const {name, value} = event.target;
     
       const updateExperience = experience.map((job) => {
@@ -104,16 +102,16 @@ const handleDelete = (id) => {
     const handleUpdateWorkHistoryFormfromEdit = (event, id) => {
     
       handleUpdateWorkHistoryForm(event, id);
+
           const {name, value} = event.target;
             const updateEditedExperience = workForm.map((job) => {
-              if (job.id  === id) {
+              if (job.id  === id) 
                return( {...job, [name]: value});
-              }
-              else 
-               return job;
-              })
+              
+              else  return job;
+            })
             setWorkForm(updateEditedExperience);
-          }
+    }
   
   const handleCreateWorkHistory = () => {
     setisEdit(false);
@@ -147,21 +145,21 @@ const handleDelete = (id) => {
   return (
     <div className='container'>
       <div id='sidebar'>
-        {/* <PersonalInfoInput 
+        <PersonalInfoInput 
           props =  { personalInfo }
           changeHandler = { () => {handlePersonalChange(event, setPersonalInfo)} }
-        /> */}
-  
-          {/* 2 functions updating this (add and edit) how to go about this properly*/}
+        /> 
         
-        { !isEdit && <div>
+        {/* 2 functions updating setstate{experience} (add and edit) how to go about this properly*/}
+        { !isEdit ? 
+          <div>
           <WorkExperienceForm
             details = {experience}
             onChangeHandler = { handleUpdateWorkHistoryForm}
             addHandler = {handleCreateWorkHistory} />
          </div>
-        }
-        { isEdit && <div>
+        :
+        <div>
         <WorkExperienceForm
           details = {workForm}
           onChangeHandler = { handleUpdateWorkHistoryFormfromEdit}
@@ -178,8 +176,8 @@ const handleDelete = (id) => {
       </div>
     
       <div id='main'>
-{/*     
-        <PersonalDetails details = { personalInfo } /> */}
+     
+        <PersonalDetails details = { personalInfo } /> 
 
       
         <div>
