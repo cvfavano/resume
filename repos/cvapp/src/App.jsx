@@ -30,7 +30,7 @@ const [showButtons, setButtons] = useState(true);
     details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
   },
 ])
-const [workID, setWorkID] = useState(experience[0].id);
+
 
   const [education, setEducation] = useState({
     name:'ACS University',
@@ -54,39 +54,52 @@ const handleDelete = (id) => {
      return prevExperience
       .filter((experience => experience.id !== id ))
   })  
-
+  
+}
   // CHECK: IS THIS THE CORRECT WAY TO HANDLE UNDEFINED STATE
   if(experience.length === 0) { 
-    const newId =uuid()
+ 
     setExperience([{ 
-      id: newId,
+      id: uuid(),
       company:'Add Company',
       startDate: '2000-01-22',
       endDate: '2005-02-15',
       title: 'Add Title',
       details: 'Add Description'
     }])
-    setWorkID(newId)
-  } 
-}
-
+  }
     
 
 //form updates only
   const handleUpdateWorkHistoryForm = (event, id) => {
 
     // let currentJobs = experience;
-    // let filteredJob = currentJobs.filter(job => { (job.id === id)}) 
-
+    //  let filteredJob = experience.filter(job => { (job.id === id)}) 
+    //  console.log*()
+    // const filteredJobId = id;
     const {name, value} = event.target;
-    const items = experience.filter(job => job.id != id);
+    // const items = experience.filter(job => job.id != id);
   
-    experience.map(job => {      
-      if(job.id === id) 
-        ( setExperience([...items, {...job, [name]:value}]) )
-    })
-  }
+    // experience.map(job => {      
+    //   if(job.id === id) 
+    //     ( setExperience([...items, {...job, [name]:value}]) )
+    // })
+      const updateExperience = experience.map((job) => {
+        console.log(job)
+        console.log(id)
+        if (job.id  === id) {
+          console.log(job)
+        console.log([name], value);
+         return( {...job, [name]: value});
+        }
+        else 
+         return job;
+        })
+      console.log(updateExperience)
+      setExperience(updateExperience);
+    }
 
+  
   const handleCreateWorkHistory = () => {
     const newId = uuid()
     const newWorkHistory=  {
@@ -102,27 +115,17 @@ const handleDelete = (id) => {
       ...previousState,
       newWorkHistory
     ]))
-
-    setWorkID(newWorkHistory.id)
-
-    
-  
   }
  
   const loadUpdateToForm = (id) => {
- 
-    
-    experience.filter(job => {
-      if (job.id === id) {
-        (setWorkID(id))
-      }
+    let jobToUpdate = experience.filter(job => {
+      if (job.id === id) 
+        (job)
+      
     })
+    return jobToUpdate
   }
    
-
-
-   
-
   return (
     <div className='container'>
       <div id='sidebar'>
@@ -134,7 +137,7 @@ const handleDelete = (id) => {
           {/* 2 functions updating this (add and edit) how to go about this properly*/}
         <WorkExperienceForm
           details = {experience}
-          id = {workID}
+        
           onChangeHandler = { handleUpdateWorkHistoryForm}
           addHandler = {handleCreateWorkHistory}
         />
