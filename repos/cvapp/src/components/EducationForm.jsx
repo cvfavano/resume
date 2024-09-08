@@ -1,55 +1,56 @@
 import React from 'react'
 import uuid from 'react-uuid'
 
-function Education({props, changeHandler}) {
+function EducationForm(props) {
     // console.log(props)
     // console.log(props.name)
     const id = uuid();
-    const { name, date, major, location } = props;
+ 
     return(
         <div>
             <hr />
+            <button type = "text" onClick={ ()=>{createEducation(event, props.details.id)} }>Add</button>
             <h4>Education</h4>
 
             <label htmlFor ={id +'name'}>Name</label>
             
             <input 
-                value = {name}
+                value = {props.details.name}
                 name= 'name'
                 type='text'
                 id={id + 'name'}
-                onChange = { changeHandler }
+                onChange = { props.details.onChangeHandler }
             />
 
             <label htmlFor ={id +'date'}>Graduation Date</label>
             <input 
-                value = {date}
+                value = {props.details.date}
                 name = 'date'
                 type = 'date'
                 id= { id + 'date' }
-                onChange = { changeHandler }
+                onChange = { props.details.onChangeHandler }
             />
 
             <label htmlFor ={ id +'major' }>Major</label>
             <input 
-                value = { major }
+                value = { props.details.major }
                 name = 'major'
                 type = 'text'
                 id = { id + 'major'}
-                onChange = { changeHandler }
+                onChange = { props.details.onChangeHandler }
             />
             
             <label htmlFor = { id + 'location' }>Location</label>
             <input 
-                value = { location }
+                value = { props.details.location }
                 name = 'location'
                 type = 'text'
                 id = {id + 'location' }
-                onChange = { changeHandler }
+                onChange = { props.details.onChangeHandler }
             />
         </div>
     )
 
 }
 
-export default Education
+export default EducationForm

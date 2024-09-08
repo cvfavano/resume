@@ -5,7 +5,7 @@ import PersonalInfoInput from './components/PersonalInfoInput.jsx'
 import PersonalDetails from './components/PersonalDetails.jsx'
 import WorkExperienceForm from './components/WorkExperienceForm.jsx'
 import WorkExperienceDetails from './components/WorkExperienceDetails.jsx'
-import Education from './components/Education.jsx'
+import EducationForm from './components/EducationForm.jsx'
 import EducationDetails from './components/EducationDetails.jsx' 
 
 function App() {
@@ -47,7 +47,7 @@ function App() {
     date: '2006-12-12'
   }])
 
-  const [EducationForm, setEducationForm] = useState({
+  const [educationForm, setEducationForm] = useState({
     id: '6482d9c8-46e9-506d-3a5a-53389eb4a7c8',
     name:'ACS University',
     major: 'BSc Chemical Engineering',
@@ -157,9 +157,9 @@ const handlePersonalChange = (event) => {
           addHandler = { handleCreateWorkHistory } />
    
   
-        <Education 
-          props = {education}
-          changeHandler={ () => {handlePersonalChange(event, setEducation)} }
+        <EducationForm 
+          details = {education}
+          onChangeHandler={ () => {handlePersonalChange(event, setEducation)} }
         />
 
       </div>
