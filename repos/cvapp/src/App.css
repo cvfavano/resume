@@ -1,7 +1,7 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  
 }
 
 button:hover {
@@ -42,6 +42,19 @@ button:hover {
   width: 250px;
   padding: 20px;
 }
+
+#sidebar button {
+  padding: .4em .6em;
+    font-size: .75em;
+    position: absolute;
+    right: -16px;
+    top: -9px;
+}
+#sidebar .work-form-container {
+  position: relative;
+  margin-top: 20px;
+}
+
 #main{
   display: flex;
   flex-direction: column;
@@ -126,7 +139,7 @@ label {
   font-style: normal;
 }
 
-@media screen and (min-width:1025px) {
+@media screen and (min-width:1200px) {
   #main {
     width: 100%;
     min-width: 1025px;

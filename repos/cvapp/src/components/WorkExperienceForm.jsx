@@ -11,7 +11,7 @@ function WorkExperienceForm(props) {
     //is this needed
     const id = useId();
     return (
-        <div>
+        <div className='work-form-container'>
             <button type="button" onClick={AddNewExperience}>Add New</button>
              
             <div className = "form-container">        
