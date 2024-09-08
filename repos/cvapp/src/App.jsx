@@ -140,7 +140,33 @@ const handlePersonalChange = (event) => {
     setWorkForm(jobToUpdate[0])
   }
 
+const createEducation = () => {
+  const newId = uuid();
+  const newEducation =  {
+    id: newId,
+    name:'Update School/University',
+    major: 'Update Major',
+    location:'Update City',
+    date: ''
+  }
+  
+  setEducation(previousState => ([
+    ...previousState,
+    newEducation
+  ]))
+  setEducationForm(newEducation)
+}
+const readEducation = () => {
 
+}
+
+const updateEducationForm = () => {
+
+}
+
+const deleteEducation = () => {
+
+}
    
   return (
     <div className='container'>
@@ -158,8 +184,9 @@ const handlePersonalChange = (event) => {
    
   
         <EducationForm 
-          details = {education}
-          onChangeHandler={ () => {handlePersonalChange(event, setEducation)} }
+          details = { education }
+          onChangeHandler = { () => { updateEducationForm } }
+          createHandler = { createEducation } 
         />
 
       </div>
@@ -175,7 +202,11 @@ const handlePersonalChange = (event) => {
           />
         </div>
         
-        <EducationDetails details = { education } />
+        <EducationDetails 
+          details = { education } 
+          deleteHandler = { deleteEducation }
+          readHandler = { readEducation }
+        />
       </div>
     </div>
   )
