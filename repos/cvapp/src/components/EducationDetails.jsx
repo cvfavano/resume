@@ -9,7 +9,7 @@ export default function EducationDetails(props) {
 
             { props.details.map((school, index) =>
                 <div key={index}>
-                    <button type="text" onClick = { () => { editHangler(school.id) }} >Edit</button>
+                    <button type="text" onClick = { () => { editHandler(school.id) }} >Edit</button>
                     <button type="text" onClick = { () => { deleteHandler(school.id) }}>Delete</button>
 
                     <p className='education'>{school.major} - {school.name} {school.location} <span className="grad-date">{school.date} </span>  </p>
