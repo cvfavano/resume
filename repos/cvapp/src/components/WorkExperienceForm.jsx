@@ -12,7 +12,7 @@ function WorkExperienceForm(props) {
     return (
         <div className='work-form-container'>
             <h4>Work History</h4>
-            <button type="button" onClick={AddNewExperience}>Add New</button>
+            <button type="button" onClick={AddNewExperience}>Add More</button>
              
             <div className = "form-container">        
                 <label htmlFor= { id + 'company' } >Company</label>

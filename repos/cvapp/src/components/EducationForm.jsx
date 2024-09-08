@@ -9,7 +9,7 @@ function EducationForm(props) {
     return(
         <div className="education-form-container">
             
-            <button type = "text" onClick={ ()=>{props.createHandler(event, props.details.id)} }>Add New</button>
+            <button type = "text" onClick={ ()=>{props.createHandler(event, props.details.id)} }>Add More</button>
             <h4>Education</h4>
 
             <label htmlFor ={id +'name'}>Name</label>

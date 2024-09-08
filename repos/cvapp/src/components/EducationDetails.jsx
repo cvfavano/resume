@@ -14,7 +14,7 @@ export default function EducationDetails(props) {
                         <button type="text" onClick = { () => { props.deleteHandler(school.id) }}>Delete</button>
                     </div>
                     <p className='education'>{school.major} <span className="grad-date">{school.date != '' ? school.date : 'Add date'} </span>  </p>
-                    <p> {school.name} - {school.location}</p>
+                    <p className='school-details'> {school.name} - {school.location}</p>
                 </div>
       
             )}

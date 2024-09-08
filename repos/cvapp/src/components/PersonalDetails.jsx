@@ -11,7 +11,7 @@ function PersonalDetails(props) {
         <p className='cv-name'>{props.details.fullName}</p>
         <p>{props.details.address}</p>
         <p>
-            {props.details.email}   &#9679;  <span>{props.details.phone}</span>
+            {props.details.email}   &#10021;  <span>{props.details.phone}</span>
         </p>
         
         
