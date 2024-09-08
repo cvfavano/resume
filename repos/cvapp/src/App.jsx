@@ -29,9 +29,16 @@ const [showButtons, setButtons] = useState(true);
     endDate: '2005-02-15',
     title: 'Consultant',
     details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-  },
+  }
 ])
-const [workForm, setWorkForm] = useState(experience)
+const [workForm, setWorkForm] = useState({
+  id: experience.id,
+    company:'AGK Consulting',
+    startDate: '2000-01-22',
+    endDate: '2005-02-15',
+    title: 'Consultant',
+    details: 'Lorem ipsum dolor sit amet, consectetur adi'}
+)
 
   const [education, setEducation] = useState({
     name:'ACS University',
@@ -52,37 +59,34 @@ const handlePersonalChange = (event) => {
 }
 
 const handleDelete = (id) => {
- // setIsEditExperience(false)
-  setExperience((prevExperience)=> { 
-      prevExperience
-      .filter((experience => experience.id !== id ))
-  })  
-  if(experience.length === 0) { 
-    setExperience([{ 
-      id: uuid(),
-      company:'Add Company',
-      startDate: '2000-01-22',
-      endDate: '2005-02-15',
-      title: 'Add Title',
-      details: 'Add Description'
-    }])
-  }
-  setWorkForm(experience.at(-1));
- console.log(workForm)
+
+  let filteredExperience = experience.filter((job => job.id !== id ));
+  console.log(filteredExperience)
+  console.log(experience)
+
+  
+  setExperience(filteredExperience)  
+  setWorkForm(filteredExperience.at(-1))
+
+  
+console.log(experience)
 }
-  // CHECK: IS THIS THE CORRECT WAY TO HANDLE UNDEFINED STATE
-  if(experience.length === 0) { 
-    setExperience([{ 
-      id: uuid(),
-      company:'Add Company',
-      startDate: '2000-01-22',
-      endDate: '2005-02-15',
-      title: 'Add Title',
-      details: 'Add Description'
-    }])
-    setWorkForm(experience.at(-1));
+
+if(experience.length === 0 ){
+  console.log('here')
+  const newExperience = {
+    id: uuid(),
+    company:'Add Company',
+    startDate: '',
+    endDate: '',
+    title: 'Add Title',
+    details: 'Add Description'
   }
-    
+  setExperience([newExperience])  
+  setWorkForm(newExperience)
+  console.log(experience)
+  console.log(workForm)
+}
 
 //form updates only
   const handleUpdateWorkHistoryForm = (event, id) => {
@@ -129,15 +133,14 @@ const handleDelete = (id) => {
       newWorkHistory
     ]))
     setWorkForm(newWorkHistory)
-    console.log(workForm)
+   
   }
  
   const loadUpdateToForm = (id) => {
-   // setisEditExperience(true)
+
     let jobToUpdate = experience.filter(job => {
       if (job.id === id) 
         return job
-      
     })
     setWorkForm(jobToUpdate)
     
@@ -151,23 +154,13 @@ const handleDelete = (id) => {
           changeHandler = { () => {handlePersonalChange(event)} }
         /> 
         
-        {/* 2 functions updating setstate{experience} (add and edit) how to go about this properly*/}
-        {/* {!isEditExperience ?  */}
-          <div>
-            <WorkExperienceForm
-              details = { workForm }
-              onChangeHandler = { handleUpdateWorkHistoryForm }
-              addHandler = { handleCreateWorkHistory } />
-          </div>
-        {/* // :
-        //   <div>
-        //     <WorkExperienceForm
-        //       details = {workForm}
-        //       onChangeHandler = { handleUpdateWorkHistoryFormfromEdit}
-        //       addHandler = {handleCreateWorkHistory}
-        //     />
-        //   </div>
-        // }  */}
+      <div>
+        <WorkExperienceForm
+          details = { workForm }
+          onChangeHandler = { handleUpdateWorkHistoryForm }
+          addHandler = { handleCreateWorkHistory } />
+      </div>
+  
       <Education 
         props = {education}
         changeHandler={ () => {handlePersonalChange(event, setEducation)} }
@@ -183,7 +176,7 @@ const handleDelete = (id) => {
         <div>
           <h2 className='header'>Work Experience</h2>
           <WorkExperienceDetails 
-            props = { experience } 
+            details = { experience } 
             deleteHandler = { handleDelete } 
             editHandler = { loadUpdateToForm }  
           />

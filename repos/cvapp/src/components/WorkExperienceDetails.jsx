@@ -4,7 +4,7 @@ function WorkExperienceDetails(props) {
     return(
         <div className = 'work-experience'>    
             {
-                props.props.map((work, index) =>{
+                props.details.map((work, index) =>{
                     return(
                     <div key={index}>
                         
