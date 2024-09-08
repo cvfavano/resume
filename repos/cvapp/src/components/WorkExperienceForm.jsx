@@ -3,8 +3,7 @@ import { useId } from 'react';
 
 
 function WorkExperienceForm(props) {
- console.log(props.details.id)
- console.log()
+
     const AddNewExperience = function (){ 
         props.addHandler() ;
     } 

@@ -48,7 +48,7 @@ button:hover {
     font-size: .75em;
     position: absolute;
     right: -16px;
-    top: 0px;
+    top: 20px;
 }
 #sidebar .work-form-container {
   position: relative;
