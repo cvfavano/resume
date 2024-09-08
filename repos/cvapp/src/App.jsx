@@ -89,16 +89,16 @@ const handlePersonalChange = (event) => {
 
   const handleUpdateWorkHistoryForm = (event, id) => {
 
-    const {name, value} = event.target;
+    const {name, value} = event.target
     const updateExperience = experience.map(job => {
       if (job.id  === id) 
-        return( {...job, [name]: value});
+        return( {...job, [name]: value})
       
       else 
         return job;
       })
         
-      setExperience(updateExperience);
+      setExperience(updateExperience)
     
       setWorkForm(prevWorkForm => ({
         ...prevWorkForm, 
@@ -166,10 +166,28 @@ const readEducation = (id) => {
   setEducationForm(educationToUpdate[0])
 }
 
-const updateEducationForm = () => {
+const updateEducationForm = (event, id) => {
 
-}
-
+  const {name, value} = event.target
+  console.log(name, event)
+  const updatedEducation = education.map(school => {
+    console.log(education)
+    if (school.id  === id) 
+      return( {...school, [name]: value})
+    
+    else 
+      return school;
+    })
+      
+    setEducation(updatedEducation)
+  console.log(education)
+    setEducationForm(prevEducationForm => ({
+      ...prevEducationForm, 
+      [name]: value
+      })
+    )    
+    console.log(educationForm)     
+  }
 const deleteEducation = (id) => {
 
   let filteredEducation = education.filter((school => school.id !== id ));
@@ -202,13 +220,13 @@ if(education.length === 0 ){
       
         <WorkExperienceForm
           details = { workForm }
-          onChangeHandler = {handleUpdateWorkHistoryForm }
+          onChangeHandler = { handleUpdateWorkHistoryForm }
           addHandler = { handleCreateWorkHistory } />
    
   
         <EducationForm 
           details = { educationForm }
-          onChangeHandler = { () => { updateEducationForm } }
+          onChangeHandler = { updateEducationForm }
           createHandler = { createEducation } 
         />
 
