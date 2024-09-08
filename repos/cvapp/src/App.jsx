@@ -169,9 +169,9 @@ const readEducation = (id) => {
 const updateEducationForm = (event, id) => {
 
   const {name, value} = event.target
-  console.log(name, event)
+
   const updatedEducation = education.map(school => {
-    console.log(education)
+    
     if (school.id  === id) 
       return( {...school, [name]: value})
     
@@ -180,23 +180,29 @@ const updateEducationForm = (event, id) => {
     })
       
     setEducation(updatedEducation)
-  console.log(education)
+ 
     setEducationForm(prevEducationForm => ({
       ...prevEducationForm, 
       [name]: value
       })
     )    
-    console.log(educationForm)     
+        
   }
 const deleteEducation = (id) => {
 
   let filteredEducation = education.filter((school => school.id !== id ));
-  
+console.log('jer')
+
+
   setEducation(filteredEducation)  
   setEducationForm(filteredEducation.at(-1))
+
+
 }
 
 if(education.length === 0 ){
+    
+  console.log('here')
   const newId = uuid();
   const newEducation = {
     id: newId,
@@ -205,8 +211,8 @@ if(education.length === 0 ){
     location:'Update City',
     date: ''
   }
-  setExperience([newEducation])  
-  setWorkForm(newEducation)
+  setEducation([newEducation])  
+  setEducationForm(newEducation)
 }
    
   return (
