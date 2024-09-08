@@ -118,12 +118,16 @@ label {
   margin-left: auto;
 }
 
-.work-experience button {
+.work-experience button,
+#education-details button {
   margin-left: 0.2em;
   padding: 0.2em 0.5em;
   font-size: 0.75em;
 }
 
+.education-form-container {
+  position:relative;
+}
 
 .work-experience h3{
   display: flex;
@@ -144,6 +148,10 @@ label {
 
 .work-experience .title span {
   font-style: normal;
+}
+
+.education-form-container {
+  position: relative;
 }
 
 @media screen and (min-width:1200px) {

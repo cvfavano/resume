@@ -7,8 +7,8 @@ function EducationForm(props) {
     const id = uuid();
  
     return(
-        <div>
-            <hr />
+        <div className="education-form-container">
+            
             <button type = "text" onClick={ ()=>{createEducation(event, props.details.id)} }>Add</button>
             <h4>Education</h4>
 
