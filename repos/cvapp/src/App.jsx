@@ -164,8 +164,25 @@ const updateEducationForm = () => {
 
 }
 
-const deleteEducation = () => {
+const deleteEducation = (id) => {
 
+  let filteredEducation = education.filter((school => school.id !== id ));
+  
+  setEducation(filteredEducation)  
+  setEducationForm(filteredEducation.at(-1))
+}
+
+if(education.length === 0 ){
+  const newId = uuid();
+  const newEducation = {
+    id: newId,
+    name:'Update School/University',
+    major: 'Update Major',
+    location:'Update City',
+    date: ''
+  }
+  setExperience([newEducation])  
+  setWorkForm(newEducation)
 }
    
   return (
