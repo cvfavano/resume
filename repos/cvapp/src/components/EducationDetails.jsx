@@ -10,7 +10,7 @@ console.log(props)
             { props.details.map((school, index) =>
                 <div key={index} className = 'education-details'>
                     <div className='button-container'>
-                        <button type="text" onClick = { () => { props.editHandler(school.id) }} >Edit</button>
+                        <button type="text" onClick = { () => { props.readHandler(school.id) }} >Edit</button>
                         <button type="text" onClick = { () => { props.deleteHandler(school.id) }}>Delete</button>
                     </div>
                     <p className='education'>{school.major} <span className="grad-date">{school.date} </span>  </p>

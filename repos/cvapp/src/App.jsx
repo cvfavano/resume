@@ -156,8 +156,14 @@ const createEducation = () => {
   ]))
   setEducationForm(newEducation)
 }
-const readEducation = () => {
+const readEducation = (id) => {
 
+  let educationToUpdate = education.filter(school => {
+    if(school.id === id) 
+      return school
+    
+  })
+  setEducationForm(educationToUpdate[0])
 }
 
 const updateEducationForm = () => {
@@ -201,7 +207,7 @@ if(education.length === 0 ){
    
   
         <EducationForm 
-          details = { education }
+          details = { educationForm }
           onChangeHandler = { () => { updateEducationForm } }
           createHandler = { createEducation } 
         />
