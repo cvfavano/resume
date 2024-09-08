@@ -73,7 +73,10 @@ input, textarea  {
   padding: 5px;
 }
 
-
+input:focus-visible,
+textarea:focus-visible {
+  outline-color: #444;
+}
 
 #personal-details p {
   text-align: center;

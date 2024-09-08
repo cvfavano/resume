@@ -3,7 +3,8 @@ import { useId } from 'react';
 
 
 function WorkExperienceForm(props) {
- 
+ console.log(props.details.id)
+ console.log()
     const AddNewExperience = function (){ 
         props.addHandler() ;
     } 
@@ -21,7 +22,7 @@ function WorkExperienceForm(props) {
                     type="text"
                     name = 'company'
                     value={props.details.company}
-                    onChange={()=>props.onChangeHandler(event, props.details.id)}
+                    onChange={ ()=>props.onChangeHandler(event, props.details.id) }
                     id={id + 'company'} 
                 />
             

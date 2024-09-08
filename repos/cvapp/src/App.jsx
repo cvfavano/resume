@@ -22,7 +22,7 @@ function App() {
   })
 
   const [experience, setExperience] = useState([{
-    id: uuid(),
+    id: '6482d9c8-46e9-506d-3a5a-53389eb4a7c7',
     company:'AGK Consulting',
     startDate: '2000-01-22',
     endDate: '2005-02-15',
@@ -30,14 +30,16 @@ function App() {
     details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
   }
 ])
-const [workForm, setWorkForm] = useState({
-  id: experience.id,
-    company:'AGK Consulting',
-    startDate: '2000-01-22',
-    endDate: '2005-02-15',
-    title: 'Consultant',
-    details: 'Lorem ipsum dolor sit amet, consectetur adi'}
-)
+console.log(experience)
+const [workForm, setWorkForm] = useState({git
+  id: '6482d9c8-46e9-506d-3a5a-53389eb4a7c7',
+  company:'AGK Consulting',
+  startDate: '2000-01-22',
+  endDate: '2005-02-15',
+  title: 'Consultant',
+  details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+})
+
 
 const [education, setEducation] = useState({
   name:'ACS University',
@@ -66,7 +68,6 @@ const handleDelete = (id) => {
 }
 
 if(experience.length === 0 ){
-  console.log('here')
   const newExperience = {
     id: uuid(),
     company:'Add Company',
@@ -79,29 +80,30 @@ if(experience.length === 0 ){
   setWorkForm(newExperience)
 }
 
-//form updates only
   const handleUpdateWorkHistoryForm = (event, id) => {
 
     const {name, value} = event.target;
-    
-      const updateExperience = experience.map((job) => {
-       
+      const updateExperience = experience.map(job => {
         if (job.id  === id) 
          return( {...job, [name]: value});
         
         else 
          return job;
         })
-
-      setExperience(updateExperience);
-
-        const updateWorkForm = workForm.map((job) => {
-          if (job.id  === id) 
-            return( {...job, [name]: value});
+        
+        setExperience(updateExperience);
+     
+        setWorkForm(prevWorkForm => ({
+            ...prevWorkForm, 
+            [name]: value
+            })
+          )
           
-          else  return job;
-        })
-        setWorkForm(updateWorkForm);
+        
+      
+    //  console.log(updateExperience)
+ //     setWorkForm(updateWorkForm);
+    //  console.log(workForm)
     }
 
     //edit button trigger //update state of experience and workForm
@@ -134,10 +136,7 @@ if(experience.length === 0 ){
         return job
       
     })
-    
     setWorkForm(jobToUpdate[0])
-    console.log(jobToUpdate[0])
-    console.log(workForm)
   }
    
   return (
@@ -151,7 +150,7 @@ if(experience.length === 0 ){
       <div>
         <WorkExperienceForm
           details = { workForm }
-          onChangeHandler = { handleUpdateWorkHistoryForm }
+          onChangeHandler = {handleUpdateWorkHistoryForm }
           addHandler = { handleCreateWorkHistory } />
       </div>
   
