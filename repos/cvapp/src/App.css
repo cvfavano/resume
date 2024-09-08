@@ -48,11 +48,15 @@ button:hover {
     font-size: .75em;
     position: absolute;
     right: -16px;
-    top: -9px;
+    top: 0px;
 }
 #sidebar .work-form-container {
   position: relative;
   margin-top: 20px;
+}
+
+#sidebar h4 {
+  margin-bottom: 10px;
 }
 
 #main{

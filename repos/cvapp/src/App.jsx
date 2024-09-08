@@ -130,11 +130,14 @@ if(experience.length === 0 ){
   const loadUpdateToForm = (id) => {
 
     let jobToUpdate = experience.filter(job => {
-      if (job.id === id) 
+      if(job.id === id) 
         return job
+      
     })
-    setWorkForm(jobToUpdate)
     
+    setWorkForm(jobToUpdate[0])
+    console.log(jobToUpdate[0])
+    console.log(workForm)
   }
    
   return (

@@ -4,7 +4,6 @@ import { useId } from 'react';
 
 function WorkExperienceForm(props) {
  
-
     const AddNewExperience = function (){ 
         props.addHandler() ;
     } 
@@ -12,6 +11,7 @@ function WorkExperienceForm(props) {
     const id = useId();
     return (
         <div className='work-form-container'>
+            <h4>Work History</h4>
             <button type="button" onClick={AddNewExperience}>Add New</button>
              
             <div className = "form-container">        
