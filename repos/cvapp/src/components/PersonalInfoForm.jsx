@@ -1,6 +1,6 @@
 import React, { useId } from "react";
 
- function PersonalInfoInput({ props, changeHandler }) {
+ function PersonalInfoForm({ props, changeHandler }) {
 
   
   const id = useId();
@@ -53,4 +53,4 @@ import React, { useId } from "react";
     </div>
   )}
 
-  export default PersonalInfoInput;
+  export default PersonalInfoForm;

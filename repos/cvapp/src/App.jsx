@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import  uuid  from 'react-uuid';
-import PersonalInfoInput from './components/PersonalInfoInput.jsx'
+import PersonalInfoForm from './components/PersonalInfoForm.jsx'
 import PersonalDetails from './components/PersonalDetails.jsx'
 import WorkExperienceForm from './components/WorkExperienceForm.jsx'
 import WorkExperienceDetails from './components/WorkExperienceDetails.jsx'
@@ -56,7 +56,7 @@ function App() {
   })
 
 
-const handlePersonalChange = (event) => {
+const updatePersonalInfo = (event) => {
     
   const {name, value} = event.target;
 
@@ -66,7 +66,7 @@ const handlePersonalChange = (event) => {
   }))
 }
 
-  const handleDelete = (id) => {
+  const deleteExperience = (id) => {
 
     let filteredExperience = experience.filter((job => job.id !== id ));
     
@@ -87,7 +87,7 @@ const handlePersonalChange = (event) => {
     setWorkForm(newExperience)
   }
 
-  const handleUpdateWorkHistoryForm = (event, id) => {
+  const updateWorkExperience = (event, id) => {
 
     const {name, value} = event.target
     const updateExperience = experience.map(job => {
@@ -110,7 +110,7 @@ const handlePersonalChange = (event) => {
  
    
   
-  const handleCreateWorkHistory = () => {
+  const createWorkExperience = () => {
    
     const newId = uuid()
     const newWorkHistory=  {
@@ -214,16 +214,16 @@ if(education.length === 0 ){
   return (
     <div className='container'>
       <div id='sidebar'>
-        <PersonalInfoInput 
+        <PersonalInfoForm 
           props =  { personalInfo }
-          changeHandler = { handlePersonalChange }
+          changeHandler = { updatePersonalInfo }
         /> 
         
       
-        <WorkExperienceForm
+        <WorkExperienceFormgita 
           details = { workForm }
-          onChangeHandler = { handleUpdateWorkHistoryForm }
-          addHandler = { handleCreateWorkHistory } />
+          onChangeHandler = { updateWorkExperience }
+          addHandler = { createWorkExperience } />
    
   
         <EducationForm 
@@ -240,7 +240,7 @@ if(education.length === 0 ){
           <h2 className='header'>Work Experience</h2>
           <WorkExperienceDetails 
             details = { experience } 
-            deleteHandler = { handleDelete } 
+            deleteHandler = { deleteExperience } 
             editHandler = { loadUpdateToForm }  
           />
         </div>
