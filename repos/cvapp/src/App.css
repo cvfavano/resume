@@ -125,3 +125,11 @@ label {
 .work-experience .title span {
   font-style: normal;
 }
+
+@media screen and (min-width:1025px) {
+  #main {
+    width: 100%;
+    min-width: 1025px;
+    
+  }
+}

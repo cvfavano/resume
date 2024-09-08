@@ -11,7 +11,7 @@ import EducationDetails from './components/EducationDetails.jsx'
 function App() {
 
 //todo, toggle edit mode
-const [showButtons, setButtons] = useState(true);
+//const [showButtons, setButtons] = useState(true);
 
 
   const [personalInfo, setPersonalInfo] = useState({
@@ -21,7 +21,6 @@ const [showButtons, setButtons] = useState(true);
     address: 'Carlsbad, CA'
   })
 
-  
   const [experience, setExperience] = useState([{
     id: uuid(),
     company:'AGK Consulting',
@@ -40,12 +39,12 @@ const [workForm, setWorkForm] = useState({
     details: 'Lorem ipsum dolor sit amet, consectetur adi'}
 )
 
-  const [education, setEducation] = useState({
-    name:'ACS University',
-    major: 'BSc Chemical Engineering',
-    location:'London, UK',
-    date: '2006-12-12'
-  })
+const [education, setEducation] = useState({
+  name:'ACS University',
+  major: 'BSc Chemical Engineering',
+  location:'London, UK',
+  date: '2006-12-12'
+})
 
 
 const handlePersonalChange = (event) => {
@@ -61,15 +60,9 @@ const handlePersonalChange = (event) => {
 const handleDelete = (id) => {
 
   let filteredExperience = experience.filter((job => job.id !== id ));
-  console.log(filteredExperience)
-  console.log(experience)
-
   
   setExperience(filteredExperience)  
   setWorkForm(filteredExperience.at(-1))
-
-  
-console.log(experience)
 }
 
 if(experience.length === 0 ){
@@ -84,8 +77,6 @@ if(experience.length === 0 ){
   }
   setExperience([newExperience])  
   setWorkForm(newExperience)
-  console.log(experience)
-  console.log(workForm)
 }
 
 //form updates only
