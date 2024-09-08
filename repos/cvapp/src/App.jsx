@@ -30,8 +30,7 @@ function App() {
     details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
   }
 ])
-console.log(experience)
-const [workForm, setWorkForm] = useState({git
+const [workForm, setWorkForm] = useState({
   id: '6482d9c8-46e9-506d-3a5a-53389eb4a7c7',
   company:'AGK Consulting',
   startDate: '2000-01-22',
