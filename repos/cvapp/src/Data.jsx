@@ -5,13 +5,7 @@ const Data = {
         phone: '(909) 876 - 1232',
         address: 'Carlsbad, CA'
     },
-    education : {
-    fullName: 'Maki Bao',
-    email: 'cali@google.com',
-    phone: '(909) 876 - 1232',
-    address: 'Carlsbad, CA'
-  },
-
+   
   experience :{
     id: '6482d9c8-46e9-506d-3a5a-53389eb4a7c7',
     company:'AGK Consulting',
@@ -22,7 +16,13 @@ const Data = {
   },
 
 
-
+education : {
+    id: '6482d9c8-46e9-506d-3a5a-53389eb4a7c8',
+    name:'ACS University',
+    major: 'BSc Chemical Engineering',
+    location:'London, UK',
+    date: '2006-12-12'
+  }
 }
 
 export default Data
