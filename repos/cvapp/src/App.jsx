@@ -182,7 +182,7 @@ const updateEducationForm = (event, id) => {
     <div className='container'>
       <div id='sidebar'>
         <PersonalInfoForm 
-          props =  { personalInfo }
+          personalInfo =  { personalInfo }
           changeHandler = { updatePersonalInfo }
         /> 
       

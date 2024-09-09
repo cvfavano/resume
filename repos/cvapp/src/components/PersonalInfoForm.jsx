@@ -1,6 +1,16 @@
-import React, { useId } from "react";
+import { useId } from "react";
+import PropTypes from 'prop-types';
+PersonalInfoForm.propTypes = {
+    personalInfo: PropTypes.shape({
+      fullName: PropTypes.string,
+      address: PropTypes.string,
+      phone: PropTypes.string,
+      email: PropTypes.string,
+    }),
+    changeHandler: PropTypes.func.isRequired,
+};
 
- function PersonalInfoForm({ props, changeHandler }) {
+ function PersonalInfoForm({ personalInfo, changeHandler }) {
 
   
   const id = useId();
@@ -18,7 +28,7 @@ import React, { useId } from "react";
           type = "text"
           onChange = {changeHandler} 
           name = "fullName"
-          value = { props.fullName }
+          value = { personalInfo.fullName }
           id = {id + "-name"}
          
         />
@@ -28,7 +38,7 @@ import React, { useId } from "react";
           type = 'text'
           onChange = {changeHandler}
           name = "address"
-          value = {props.address}
+          value = {personalInfo.address}
           id = {id + "-address"}
         />
        
@@ -37,7 +47,7 @@ import React, { useId } from "react";
           type = 'phone'
           onChange = {changeHandler}
           name = "phone"
-          value = {props.phone}
+          value = {personalInfo.phone}
           id = {id + "-phone"}
         />
         <br/>
@@ -47,7 +57,7 @@ import React, { useId } from "react";
           type = 'email'
           onChange = {changeHandler}
           name = "email"
-          value = {props.email}
+          value = {personalInfo.email}
           id = {id + "-email"}
         />
     </div>

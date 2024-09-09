@@ -1,5 +1,9 @@
-import React from 'react';
-
+import PropTypes from 'prop-types';
+WorkExperienceDetails.propTypes = {
+    details: PropTypes.array.isRequired,
+    editHandler: PropTypes.func.isRequired,
+    deleteHandler: PropTypes.func.isRequired
+};
 function WorkExperienceDetails(props) {
     return(
         <div className = 'work-experience'>    

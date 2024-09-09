@@ -1,5 +1,9 @@
-import React from "react";
-
+import PropTypes from 'prop-types';
+PersonalDetails.propTypes = {
+    details: PropTypes.array.isRequired,
+    createHandler: PropTypes.func.isRequired,
+    onChangeHandler: PropTypes.func.isRequired
+};
 function PersonalDetails(props) {
 
 
