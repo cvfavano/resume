@@ -36,7 +36,7 @@ function WorkExperienceForm(props) {
                     id={id + 'title'}
                 /> 
                         
-                <label htmlFor={id + 'startDate'} >startDate</label>
+                <label htmlFor={id + 'startDate'} >Start Date</label>
 
                 <input 
                     type="date"

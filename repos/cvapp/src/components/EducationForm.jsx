@@ -2,8 +2,7 @@ import React from 'react'
 import uuid from 'react-uuid'
 
 function EducationForm(props) {
-     console.log(props)
-    // console.log(props.name)
+    
     const id = uuid();
  
     return(
