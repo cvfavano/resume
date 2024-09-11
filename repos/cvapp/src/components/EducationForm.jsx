@@ -1,6 +1,10 @@
-import React from 'react'
 import uuid from 'react-uuid'
-
+import PropTypes from 'prop-types';
+EducationForm.propTypes = {
+    details: PropTypes.array.isRequired,
+    createHandler: PropTypes.func.isRequired,
+    onChangeHandler: PropTypes.func.isRequired
+};
 function EducationForm(props) {
     
     const id = uuid();

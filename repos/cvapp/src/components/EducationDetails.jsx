@@ -1,6 +1,9 @@
-import React from 'react';
-
-
+import PropTypes from 'prop-types';
+EducationDetails.propTypes = {
+    details: PropTypes.array.isRequired,
+    readHandler: PropTypes.func.isRequired,
+    deleteHandler: PropTypes.func.isRequired
+};
 export default function EducationDetails(props) {
 
     return(
@@ -21,3 +24,4 @@ export default function EducationDetails(props) {
       </div>
     )
 }
+

@@ -1,6 +1,10 @@
-import React from 'react';
 import { useId } from 'react';
-
+import PropTypes from 'prop-types';
+WorkExperienceForm.propTypes = {
+    details: PropTypes.array.isRequired,
+    addHandler: PropTypes.func.isRequired,
+    onChangeHandler: PropTypes.func.isRequired
+};
 
 function WorkExperienceForm(props) {
 
