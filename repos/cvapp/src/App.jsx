@@ -9,73 +9,10 @@ import EducationForm from './components/EducationForm.jsx'
 import EducationDetails from './components/EducationDetails.jsx' 
 import Data from './Data.jsx'
 
-function App() {
 
-  //TODO, toggle edit mode
-  //const [showButtons, setButtons] = useState(true);
-
-
-  const [personalInfo, setPersonalInfo] = useState(Data.personalInfo)
+function useCrudExperience () {
   const [experience, setExperience] = useState([Data.experience])
   const [workForm, setWorkForm] = useState(Data.experience)
-  const [education, setEducation] = useState([Data.education])
-  const [educationForm, setEducationForm] = useState(Data.education)
-
-  const updatePersonalInfo = (event) => {
-    
-    const {name, value} = event.target;
-
-    setPersonalInfo(previousState => ({
-      ...previousState,
-      [name]: value
-    }))
-  }
-
-  const deleteExperience = (id) => {
-
-    let filteredExperience = experience.filter((job => job.id !== id ));
-    
-    setExperience(filteredExperience)  
-    setWorkForm(filteredExperience.at(-1))
-  }
-
-  if(experience.length === 0 ){
-    const newExperience = {
-      id: uuid(),
-      company:'Add Company',
-      startDate: '',
-      endDate: '',
-      title: 'Add Title',
-      details: 'Add Description'
-    }
-
-    setExperience([newExperience])  
-    setWorkForm(newExperience)
-  }
-
-  const updateWorkExperience = (event, id) => {
-
-    const {name, value} = event.target
-    const updateExperience = experience.map(job => {
-      if (job.id  === id) 
-        return( {...job, [name]: value})
-      
-      else 
-        return job;
-      })
-        
-      setExperience(updateExperience)
-    
-      setWorkForm(prevWorkForm => ({
-        ...prevWorkForm, 
-        [name]: value
-        })
-      )         
-    }
-
- 
-   
-  
   const createWorkExperience = () => {
    
     const newId = uuid()
@@ -106,6 +43,69 @@ function App() {
     setWorkForm(jobToUpdate[0])
   }
 
+  const updateWorkExperience = (event, id) => {
+
+    const {name, value} = event.target
+    const updateExperience = experience.map(job => {
+      if (job.id  === id) 
+        return( {...job, [name]: value})
+      
+      else 
+        return job;
+      })
+        
+      setExperience(updateExperience)
+    
+      setWorkForm(prevWorkForm => ({
+        ...prevWorkForm, 
+        [name]: value
+        })
+      )         
+    }
+
+  const deleteExperience = (id) => {
+
+    let filteredExperience = experience.filter((job => job.id !== id ));
+    
+    setExperience(filteredExperience)  
+    setWorkForm(filteredExperience.at(-1))
+  }
+
+  if(experience.length === 0 ){
+    const newExperience = {
+      id: uuid(),
+      company:'Add Company',
+      startDate: '',
+      endDate: '',
+      title: 'Add Title',
+      details: 'Add Description'
+    }
+
+    setExperience([newExperience])  
+    setWorkForm(newExperience)
+  }
+  return { experience, workForm, createWorkExperience, readExperience, updateWorkExperience, deleteExperience }
+}
+
+
+function App() {
+  const { experience, workForm, createWorkExperience, readExperience, updateWorkExperience, deleteExperience} =  useCrudExperience()
+  //TODO, toggle edit mode
+  //const [showButtons, setButtons] = useState(true);
+  const [personalInfo, setPersonalInfo] = useState(Data.personalInfo)
+  const [education, setEducation] = useState([Data.education])
+  const [educationForm, setEducationForm] = useState(Data.education)
+
+  const updatePersonalInfo = (event) => {
+    
+    const {name, value} = event.target;
+
+    setPersonalInfo(previousState => ({
+      ...previousState,
+      [name]: value
+    }))
+  }
+  
 const createEducation = () => {
   const newId = uuid();
   const newEducation =  {
