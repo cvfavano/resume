@@ -15,6 +15,7 @@ function useCrudEducation () {
   const [educationForm, setEducationForm] = useState(Data.education)
 
 
+  
 const createEducation = () => {
   const newId = uuid();
   const newEducation =  {
@@ -88,6 +89,7 @@ const updateEducationForm = (event, id) => {
   }
   return {education, educationForm, createEducation, readEducation, updateEducationForm, deleteEducation}
 }
+
 
 function useCrudExperience () {
   const [experience, setExperience] = useState([Data.experience])
@@ -165,15 +167,14 @@ function useCrudExperience () {
   }
   return { experience, workForm, createWorkExperience, readExperience, updateWorkExperience, deleteExperience }
 }
-
-
 function App() {
   const { experience, workForm, createWorkExperience, readExperience, updateWorkExperience, deleteExperience} =  useCrudExperience()
-  const {education, educationForm, createEducation, readEducation, updateEducationForm, deleteEducation} = useCrudEducation()
   //TODO, toggle edit mode
   //const [showButtons, setButtons] = useState(true);
   const [personalInfo, setPersonalInfo] = useState(Data.personalInfo)
-  
+  const [education, setEducation] = useState([Data.education])
+  const [educationForm, setEducationForm] = useState(Data.education)
+
   const updatePersonalInfo = (event) => {
     
     const {name, value} = event.target;
@@ -183,7 +184,6 @@ function App() {
       [name]: value
     }))
   }
-   
   return (
     <div className='container'>
       <div id='sidebar'>
